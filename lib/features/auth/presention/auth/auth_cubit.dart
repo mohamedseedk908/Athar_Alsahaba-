@@ -1,14 +1,17 @@
 import 'package:bloc/bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'auth_state.dart';
 
 
 class AuthCubit extends Cubit<AuthState> {
   AuthCubit() : super(AuthInitial());
-  late String?fristName;
-  late String?lastName;
-  late String?emailAddress;
-  late String?password;
+   String?fristName;
+   String?lastName;
+   String?emailAddress;
+   String?password;
+   GlobalKey<FormState> siginUpFprmKey=GlobalKey();
+   bool?termsAndConditionCheckBoxValue=false;
 
 
 
@@ -31,5 +34,11 @@ class AuthCubit extends Cubit<AuthState> {
     }
   }
 
+
+
+  updateTerConditionCheckBox({required newvalue}){
+    termsAndConditionCheckBoxValue=newvalue;
+    emit(TermsAndConditionUpDateState());
+  }
 
 }

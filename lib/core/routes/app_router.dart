@@ -30,10 +30,10 @@ final GoRouter router = GoRouter(
       builder: (BuildContext context, GoRouterState state) {
         return BlocProvider(
           create: (context) => getIt<AuthCubit>(),
-          child: SignUp(),
+          child: const SignUp(),
         );
       },
-      routes: <RouteBase>[
+      routes: const <RouteBase>[
       ],
     ),
   ],
