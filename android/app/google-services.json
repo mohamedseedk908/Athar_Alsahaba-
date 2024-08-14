@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "669468343921",
+    "project_id": "athar-alsahaba",
+    "storage_bucket": "athar-alsahaba.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:669468343921:android:a27908c35e78d5cd65a5d0",
+        "android_client_info": {
+          "package_name": "com.athar_alsahaba.athar_alsahaba"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBk7oV7X78Pw4EQ0H-Q2OXctvl0z-sHibg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
