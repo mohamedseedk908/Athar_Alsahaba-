@@ -1,3 +1,4 @@
+import 'package:athar_alsahaba/core/functions/navigation.dart';
 import 'package:flutter/material.dart';
 import '../../../../core/utils/app_strings.dart';
 import '../widgets/custom_have_an_acunt_widget.dart';
@@ -9,22 +10,43 @@ class SignUp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: Padding(
-        padding:  EdgeInsets.symmetric(horizontal: 16),
+        padding: const EdgeInsets.symmetric(horizontal: 16),
         child: CustomScrollView(
           slivers: [
-            SliverToBoxAdapter(child: SizedBox(height: 152,),),
-            SliverToBoxAdapter(child: WelcomeTextWidget(text: AppStrings.welcome),),
-            SliverToBoxAdapter(child: SizedBox(height: 16,),),
-            SliverToBoxAdapter(child: CustomSignUpForm(),),
-            SliverToBoxAdapter(child: SizedBox(height: 16,),),
-            SliverToBoxAdapter(child:HaveAnAcountWidget(text1: AppStrings.alreadyHaveAnAccount,text2: AppStrings.signUp,)),
+            const SliverToBoxAdapter(
+              child: SizedBox(
+                height: 152,
+              ),
+            ),
+            const SliverToBoxAdapter(
+              child: WelcomeTextWidget(text: AppStrings.welcome),
+            ),
+            const SliverToBoxAdapter(
+              child: SizedBox(
+                height: 16,
+              ),
+            ),
+            const SliverToBoxAdapter(
+              child: CustomSignUpForm(),
+            ),
+            const SliverToBoxAdapter(
+              child: SizedBox(
+                height: 16,
+              ),
+            ),
+            SliverToBoxAdapter(
+                child: HaveAnAcountWidget(
+              text1: AppStrings.alreadyHaveAnAccount,
+              text2: AppStrings.signUp,
+              onTap: () {
+                customReplacementNavigation(context, "/SignIn");
+              },
+            )),
           ],
         ),
       ),
     );
   }
 }
-
-

@@ -7,12 +7,11 @@ class SignIn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: CustomScrollView(
-        slivers: [
-          SliverToBoxAdapter(child: WelcomeTextWidget( text:AppStrings.welcome),),
-        ],
-      ),
+    return  Scaffold(
+          appBar: AppBar(actions: [IconButton(onPressed: (){
+          }, icon: Icon(Icons.logout))],),
+          body: Center(child: Text("Home View"),),
+
     );
   }
 }
