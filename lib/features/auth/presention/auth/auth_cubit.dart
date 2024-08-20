@@ -24,12 +24,15 @@ class AuthCubit extends Cubit<AuthState> {
         email: emailAddress!,
         password: password!,
       );
+      verifyEmail();
       emit(SignUpSuccessState());
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
         emit(SignUpFailureState(errMessage:'The password provided is too weak.'));
       } else if (e.code == 'email-already-in-use') {
         emit(SignUpFailureState(errMessage: 'The account already exists for that email.'));
+      }else if(e.code=="invalid-email"){
+        emit(SignUpFailureState(errMessage: "The Email Is Invalid"));
       }
     } catch (e) {
       emit(SignUpFailureState(errMessage: e.toString()));
@@ -60,6 +63,7 @@ class AuthCubit extends Cubit<AuthState> {
         email: emailAddress!,
         password: password!,
       );
+      verifyEmail();
       emit(SignInSuccessState());
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
@@ -67,8 +71,17 @@ class AuthCubit extends Cubit<AuthState> {
       } else if (e.code == 'email-already-in-use') {
         emit(SignInFailureState(errMessage: "The account already exists for that email."));
       }
+      else {
+        (emit(SignInFailureState(errMessage: e.code)));
+      }
     } catch (e) {
       emit(SignInFailureState(errMessage: e.toString()));
     }
+  }
+
+
+
+   verifyEmail()async{
+    await FirebaseAuth.instance.currentUser!.sendEmailVerification();
   }
 }

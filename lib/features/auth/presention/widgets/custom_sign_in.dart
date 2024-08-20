@@ -1,6 +1,7 @@
 import 'package:athar_alsahaba/core/utils/app_colors.dart';
 import 'package:athar_alsahaba/features/auth/presention/auth/auth_cubit.dart';
 import 'package:athar_alsahaba/features/auth/presention/auth/auth_state.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/functions/custom_toast.dart';
@@ -18,8 +19,8 @@ class CustomSignInpForm extends StatelessWidget {
     return BlocConsumer<AuthCubit, AuthState>(
       listener: (context, state) {
         if (state is SignInSuccessState) {
-          showToast("Welcom Back !");
-          customReplacementNavigation(context, "/HomeView");
+          FirebaseAuth.instance.currentUser!.emailVerified?
+          customReplacementNavigation(context, "/HomeView"):showToast("please verify your account !");
         } else if (state is SignInFailureState) {
           showToast(state.errMessage);
         }

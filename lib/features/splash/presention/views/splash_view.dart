@@ -15,25 +15,27 @@ class SplashView extends StatefulWidget {
 
 class _SplashViewState extends State<SplashView> {
   @override
-void initState(){
-    bool isOnBoardingVisisted = getIt<CacheHelper>().getData(key: "isOnBoardingVisisted")??false;
-    if(isOnBoardingVisisted==true){
-      FirebaseAuth.instance.currentUser==null?
-      delayedSplashScreen(context,"/SignIn"):
-      delayedSplashScreen(context,"/HomeView");
-    }else{
-      delayedSplashScreen(context,"/OnBoardingScreen");
+  void initState() {
+    bool isOnBoardingVisisted =
+        getIt<CacheHelper>().getData(key: "isOnBoardingVisisted") ?? false;
+    if (isOnBoardingVisisted == true) {
+      FirebaseAuth.instance.currentUser == null
+          ? delayedSplashScreen(context, "/SignIn")
+          : FirebaseAuth.instance.currentUser!.emailVerified == true
+              ? delayedSplashScreen(context, "/HomeView")
+              : delayedSplashScreen(context, "/SignIn");
+    } else {
+      delayedSplashScreen(context, "/OnBoardingScreen");
     }
     super.initState();
-
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body:Center(
-        child:Text(AppStrings.appName,style:CustomTextStyles.pacifico400style64)
-      ),
+      body: Center(
+          child: Text(AppStrings.appName,
+              style: CustomTextStyles.pacifico400style64)),
     );
   }
 }
