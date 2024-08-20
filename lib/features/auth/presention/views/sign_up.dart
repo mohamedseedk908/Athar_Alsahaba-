@@ -39,7 +39,7 @@ class SignUp extends StatelessWidget {
             SliverToBoxAdapter(
                 child: HaveAnAcountWidget(
               text1: AppStrings.alreadyHaveAnAccount,
-              text2: AppStrings.signUp,
+              text2: AppStrings.signIn,
               onTap: () {
                 customReplacementNavigation(context, "/SignIn");
               },

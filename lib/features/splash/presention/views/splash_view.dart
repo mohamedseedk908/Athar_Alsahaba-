@@ -19,7 +19,7 @@ void initState(){
     bool isOnBoardingVisisted = getIt<CacheHelper>().getData(key: "isOnBoardingVisisted")??false;
     if(isOnBoardingVisisted==true){
       FirebaseAuth.instance.currentUser==null?
-      delayedSplashScreen(context,"/SignUp"):
+      delayedSplashScreen(context,"/SignIn"):
       delayedSplashScreen(context,"/HomeView");
     }else{
       delayedSplashScreen(context,"/OnBoardingScreen");

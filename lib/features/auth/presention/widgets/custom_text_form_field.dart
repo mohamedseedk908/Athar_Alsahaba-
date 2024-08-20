@@ -24,6 +24,7 @@ class CustomTextFormFField extends StatelessWidget {
         return Padding(
           padding: const EdgeInsets.only(right: 8.0, left: 8.0, top: 24),
           child: TextFormField(
+            scrollController:ScrollController(keepScrollOffset: true) ,
             validator: (value) {
               if (value!.isEmpty) {
                 return "This Field is Required";
