@@ -1,8 +1,6 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import '../../../../core/functions/navigation.dart';
 
 class HomeView extends StatelessWidget {
@@ -14,8 +12,8 @@ class HomeView extends StatelessWidget {
       appBar: AppBar(actions: [IconButton(onPressed: (){
         FirebaseAuth.instance.signOut();
         customReplacementNavigation(context, "/SignIn");
-      }, icon: Icon(Icons.logout))],),
-      body: Center(child: Text("Home View"),),
+      }, icon: const Icon(Icons.logout))],),
+      body: const Center(child:  Text("Home View"),),
     );
   }
 }

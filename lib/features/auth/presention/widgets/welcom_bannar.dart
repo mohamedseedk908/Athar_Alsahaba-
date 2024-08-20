@@ -12,13 +12,13 @@ class WelcomBannar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 290,
-      decoration: BoxDecoration(
-        image: DecorationImage(image: AssetImage("assets/images/SignIn.png",),fit:BoxFit.fill,),
+      decoration: const BoxDecoration(
+        image:  DecorationImage(image: AssetImage("assets/images/SignIn.png",),fit:BoxFit.fill,),
       ),
       child: Column(
         mainAxisAlignment:MainAxisAlignment.end,
         children: [
-          Text(AppStrings.welcome,style: CustomTextStyles.pacifico700style32,),
+          const Text(AppStrings.welcome,style: CustomTextStyles.pacifico700style32,),
           Row(
             crossAxisAlignment: CrossAxisAlignment.end,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,

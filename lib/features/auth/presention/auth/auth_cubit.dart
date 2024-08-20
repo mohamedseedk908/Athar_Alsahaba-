@@ -10,17 +10,20 @@ class AuthCubit extends Cubit<AuthState> {
    String?lastName;
    String?emailAddress;
    String?password;
-   GlobalKey<FormState> siginUpFprmKey=GlobalKey();
+
    bool?termsAndConditionCheckBoxValue=false;
    bool? obscurePasswordTextValue = true;
   GlobalKey<FormState> sigInFprmKey=GlobalKey();
+  GlobalKey<FormState> siginUpFprmKey=GlobalKey();
+  GlobalKey<FormState> ForgotPasswordFormKey=GlobalKey();
+
 
 
 
   signUpWithEmailAndPassword() async{
     try {
       emit(SignUpLoadingState());
-      final credential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: emailAddress!,
         password: password!,
       );
@@ -43,7 +46,7 @@ class AuthCubit extends Cubit<AuthState> {
     termsAndConditionCheckBoxValue=newvalue;
     emit(TermsAndConditionUpDateState());
   }
-
+////////////////////////////////////////////////////////////////////////////////
   obscurePasswordText() {
     if (obscurePasswordTextValue == true) {
       obscurePasswordTextValue = false;
@@ -52,10 +55,7 @@ class AuthCubit extends Cubit<AuthState> {
     }
     emit(ObscurePasswordTextUpdateState());
   }
-
-
-
-
+  /////////////////////////////////////////////////////////////////////////////
   Future<void> signInWithEmailAndPassword() async {
     try {
       emit(SigninLoadingState());
@@ -78,10 +78,18 @@ class AuthCubit extends Cubit<AuthState> {
       emit(SignInFailureState(errMessage: e.toString()));
     }
   }
-
-
-
+  //////////////////////////////////////////////////////////////////////////////
    verifyEmail()async{
     await FirebaseAuth.instance.currentUser!.sendEmailVerification();
   }
+  //////////////////////////////////////////////////////////////////////////////
+resetPasswordWithLink()async{
+  try {
+    emit(ResetPasswordLoadingState());
+    await FirebaseAuth.instance.sendPasswordResetEmail(email: emailAddress!);
+    emit(ResetPasswordSuccessState());
+  } on Exception catch (e) {
+    emit(ResetPasswordFailureState(errMessage: e.toString()));
+  }
+}
 }

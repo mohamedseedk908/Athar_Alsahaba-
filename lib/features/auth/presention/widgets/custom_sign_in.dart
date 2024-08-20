@@ -54,15 +54,15 @@ class CustomSignInpForm extends StatelessWidget {
                   authCubit.password = password;
                 },
               ),
-              SizedBox(
+              const SizedBox(
                 height: 16,
               ),
-              ForgotPasswordTextWidget(),
+              const ForgotPasswordTextWidget(),
               const SizedBox(
                 height: 120,
               ),
               state is SigninLoadingState
-                  ? CircularProgressIndicator()
+                  ? const CircularProgressIndicator()
                   : CustomButton(
                       color: AppColors.primaryColor,
                       onPressed: () {

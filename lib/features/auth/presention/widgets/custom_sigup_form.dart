@@ -70,7 +70,7 @@ class CustomSignUpForm extends StatelessWidget {
               const SizedBox(
                 height: 120,
               ),
-              state is SignUpLoadingState?CircularProgressIndicator():
+              state is SignUpLoadingState?const CircularProgressIndicator():
               CustomButton(
                 color: authCubit.termsAndConditionCheckBoxValue == false
                     ? AppColors.grey

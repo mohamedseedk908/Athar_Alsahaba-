@@ -6,7 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/utils/app_colors.dart';
 
 class CustomTextFormFField extends StatelessWidget {
-  CustomTextFormFField(
+  const CustomTextFormFField(
       {super.key, required this.labelText, this.onChanged, this.onFieldSubmitted, this.suffixIcon, this.obscureText,});
 
   final String labelText;
