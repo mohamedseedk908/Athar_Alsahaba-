@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../core/utils/app_strings.dart';
 import '../widgets/custom_have_an_acunt_widget.dart';
 import '../widgets/custom_sigup_form.dart';
-import '../widgets/wecome_text_widget.dart';
+import '../widgets/welcom_bannar.dart';
 
 class SignUp extends StatelessWidget {
   const SignUp({super.key});
@@ -17,11 +17,11 @@ class SignUp extends StatelessWidget {
           slivers: [
             const SliverToBoxAdapter(
               child: SizedBox(
-                height: 152,
+                height: 0,
               ),
             ),
             const SliverToBoxAdapter(
-              child: WelcomeTextWidget(text: AppStrings.welcome),
+              child: WelcomBannar(),
             ),
             const SliverToBoxAdapter(
               child: SizedBox(

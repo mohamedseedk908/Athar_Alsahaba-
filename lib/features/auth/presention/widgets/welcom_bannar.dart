@@ -13,7 +13,7 @@ class WelcomBannar extends StatelessWidget {
     return Container(
       height: 290,
       decoration: const BoxDecoration(
-        image:  DecorationImage(image: AssetImage("assets/images/SignIn.png",),fit:BoxFit.fill,),
+        image:  DecorationImage(image: AssetImage("assets/images/SignIn (2).png",),fit:BoxFit.fill,),
       ),
       child: Column(
         mainAxisAlignment:MainAxisAlignment.end,

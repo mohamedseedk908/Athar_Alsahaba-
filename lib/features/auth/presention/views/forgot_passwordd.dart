@@ -18,22 +18,22 @@ class ForgotPassword extends StatelessWidget {
               height: 108,
             ),
           ),
-           SliverToBoxAdapter(
+          SliverToBoxAdapter(
             child: WelcomeTextWidget(text: AppStrings.forgotPassword),
           ),
-           SliverToBoxAdapter(
+          SliverToBoxAdapter(
             child:  SizedBox(
               height: 40,
             ),
           ),
-            SliverToBoxAdapter(
+          SliverToBoxAdapter(
             child: ForgotPasswordImage(),
           ),
           SliverToBoxAdapter(child: SizedBox(height: 40,),),
           SliverToBoxAdapter(
             child:  ForgotPasswordSupTitle(),
           ),
-          SliverToBoxAdapter(child: CustomForgotPasswordForm(),)
+          SliverToBoxAdapter(child: CustomForgotPasswordForm(),),
         ],
       ),
     );

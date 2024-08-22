@@ -28,7 +28,7 @@ class CustomSignInpForm extends StatelessWidget {
       builder: (context, state) {
         AuthCubit authCubit = BlocProvider.of<AuthCubit>(context);
         return Form(
-          key: authCubit.sigInFprmKey,
+          key: authCubit.sigInFormKey,
           child: Column(
             children: [
               CustomTextFormFField(
@@ -61,12 +61,12 @@ class CustomSignInpForm extends StatelessWidget {
               const SizedBox(
                 height: 120,
               ),
-              state is SigninLoadingState
+              state is SignInLoadingState
                   ? const CircularProgressIndicator()
                   : CustomButton(
                       color: AppColors.primaryColor,
                       onPressed: () {
-                        if (authCubit.sigInFprmKey.currentState!.validate()) {
+                        if (authCubit.sigInFormKey.currentState!.validate()) {
                           authCubit.signInWithEmailAndPassword();
                         }
                       },

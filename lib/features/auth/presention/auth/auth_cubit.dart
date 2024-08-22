@@ -1,21 +1,23 @@
 import 'package:bloc/bloc.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'auth_state.dart';
 
 
 class AuthCubit extends Cubit<AuthState> {
   AuthCubit() : super(AuthInitial());
-   String?fristName;
+   String?firstName;
    String?lastName;
    String?emailAddress;
    String?password;
 
    bool?termsAndConditionCheckBoxValue=false;
    bool? obscurePasswordTextValue = true;
-  GlobalKey<FormState> sigInFprmKey=GlobalKey();
-  GlobalKey<FormState> siginUpFprmKey=GlobalKey();
-  GlobalKey<FormState> ForgotPasswordFormKey=GlobalKey();
+  GlobalKey<FormState> sigInFormKey=GlobalKey();
+  GlobalKey<FormState> signInFormKey=GlobalKey();
+  GlobalKey<FormState> forgotPasswordFormKey=GlobalKey();
 
 
 
@@ -27,7 +29,8 @@ class AuthCubit extends Cubit<AuthState> {
         email: emailAddress!,
         password: password!,
       );
-      verifyEmail();
+      await addUser();
+      await verifyEmail();
       emit(SignUpSuccessState());
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
@@ -41,7 +44,7 @@ class AuthCubit extends Cubit<AuthState> {
       emit(SignUpFailureState(errMessage: e.toString()));
     }
   }
-
+////////////////////////////////////////////////////////////////////////////////
   void updateTerConditionCheckBox({required newvalue}){
     termsAndConditionCheckBoxValue=newvalue;
     emit(TermsAndConditionUpDateState());
@@ -58,12 +61,12 @@ class AuthCubit extends Cubit<AuthState> {
   /////////////////////////////////////////////////////////////////////////////
   Future<void> signInWithEmailAndPassword() async {
     try {
-      emit(SigninLoadingState());
+      emit(SignInLoadingState());
       await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: emailAddress!,
         password: password!,
       );
-      verifyEmail();
+     await verifyEmail();
       emit(SignInSuccessState());
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
@@ -92,4 +95,17 @@ resetPasswordWithLink()async{
     emit(ResetPasswordFailureState(errMessage: e.toString()));
   }
 }
+////////////////////////////////////////////////////////////////////////////////
+  Future<void> addUser() async{
+    CollectionReference users = FirebaseFirestore.instance.collection("users");
+    // Call the user's CollectionReference to add a new user
+     await users.add({
+      'firstName': firstName, // John Doe
+      'lastName': lastName, // Stokes and Sons
+      'emailAddress': emailAddress // 42
+    })
+        .then((value) => print("User Added"))
+        .catchError((error) => print("Failed to add user: $error"));
+  }
+
 }
