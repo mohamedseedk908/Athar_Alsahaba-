@@ -22,7 +22,7 @@ class AuthCubit extends Cubit<AuthState> {
 
 
 
-  signUpWithEmailAndPassword() async{
+  Future<void> signUpWithEmailAndPassword() async{
     try {
       emit(SignUpLoadingState());
       await FirebaseAuth.instance.createUserWithEmailAndPassword(
@@ -50,7 +50,7 @@ class AuthCubit extends Cubit<AuthState> {
     emit(TermsAndConditionUpDateState());
   }
 ////////////////////////////////////////////////////////////////////////////////
-  obscurePasswordText() {
+  void obscurePasswordText() {
     if (obscurePasswordTextValue == true) {
       obscurePasswordTextValue = false;
     } else {
@@ -82,11 +82,11 @@ class AuthCubit extends Cubit<AuthState> {
     }
   }
   //////////////////////////////////////////////////////////////////////////////
-   verifyEmail()async{
+  Future<void> verifyEmail()async{
     await FirebaseAuth.instance.currentUser!.sendEmailVerification();
   }
   //////////////////////////////////////////////////////////////////////////////
-resetPasswordWithLink()async{
+  Future<void> resetPasswordWithLink()async{
   try {
     emit(ResetPasswordLoadingState());
     await FirebaseAuth.instance.sendPasswordResetEmail(email: emailAddress!);

@@ -6,6 +6,7 @@ import 'package:go_router/go_router.dart';
 import '../../features/auth/presention/views/forgot_passwordd.dart';
 import '../../features/auth/presention/views/sign_up.dart';
 import '../../features/home/presention/views/home_view.dart';
+import '../../features/home/presention/widgets/nav_bar_widget.dart';
 import '../../features/on_boarding/presention/views/on_boarding_screen.dart';
 import '../../features/splash/presention/views/splash_view.dart';
 
@@ -50,14 +51,6 @@ final GoRouter router = GoRouter(
       ],
     ),
     GoRoute(
-      path: '/HomeView',
-      builder: (BuildContext context, GoRouterState state) {
-        return const HomeView();
-      },
-      routes: const <RouteBase>[
-      ],
-    ),
-    GoRoute(
       path: '/ForgotPassword',
       builder: (BuildContext context, GoRouterState state) {
         return BlocProvider(
@@ -68,6 +61,24 @@ final GoRouter router = GoRouter(
       routes: const <RouteBase>[
       ],
     ),
+    GoRoute(
+      path: '/NavBarWidget',
+      builder: (BuildContext context, GoRouterState state) {
+        return const NavBarWidget();
+
+      },
+      routes: const <RouteBase>[
+      ],
+    ),
+    GoRoute(
+      path: '/HomeView',
+      builder: (BuildContext context, GoRouterState state) {
+        return const HomeView();
+      },
+      routes: const <RouteBase>[
+      ],
+    ),
+
   ],
 );
 
