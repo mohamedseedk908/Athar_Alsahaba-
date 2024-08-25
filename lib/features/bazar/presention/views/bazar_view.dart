@@ -5,8 +5,8 @@ class BazarView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: const Center(child:  Text("Bazar View"),),
+    return const Scaffold(
+      body:  Center(child:  Text("Bazar View"),),
     );
   }
 }

@@ -3,6 +3,7 @@ import 'package:athar_alsahaba/core/utils/app_strings.dart';
 import 'package:athar_alsahaba/core/utils/app_text_style.dart';
 import 'package:flutter/material.dart';
 
+
 class CustomButton extends StatelessWidget {
   const CustomButton({super.key, this.color, this.text,  this.onPressed});
   final Color? color;

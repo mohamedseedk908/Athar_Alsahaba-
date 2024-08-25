@@ -30,7 +30,7 @@ class NavBarWidget extends StatelessWidget {
           curve: Curves.ease,
         ),
         screenTransitionAnimation: ScreenTransitionAnimationSettings( // Screen transition animation on change of selected tab.
-          animateTabTransition: true,
+          animateTabTransition: false,
           duration: Duration(milliseconds: 200),
           screenTransitionAnimationType: ScreenTransitionAnimationType.fadeIn,
         ),
@@ -45,10 +45,10 @@ class NavBarWidget extends StatelessWidget {
 
 List<Widget> _buildScreens() {
   return [
-    HomeView(),
-    BazarView(),
-    CartView(),
-    SearchView(),
+    const HomeView(),
+    const BazarView(),
+    const CartView(),
+    const SearchView(),
 
   ];
 }
@@ -57,16 +57,16 @@ List<Widget> _buildScreens() {
 List<PersistentBottomNavBarItem> _navBarsItems() {
   return [
     PersistentBottomNavBarItem(
-      icon: Icon(CupertinoIcons.home),
+      icon: const Icon(CupertinoIcons.home),
     ),
     PersistentBottomNavBarItem(
-      icon: Icon(CupertinoIcons.share_up),
+      icon: const Icon(CupertinoIcons.shopping_cart),
     ),
     PersistentBottomNavBarItem(
-      icon: Icon(CupertinoIcons.shopping_cart),
+      icon: const Icon(CupertinoIcons.search),
     ),
     PersistentBottomNavBarItem(
-      icon: Icon(CupertinoIcons.search),
+      icon: const Icon(CupertinoIcons.person),
     ),
   ];
 }
