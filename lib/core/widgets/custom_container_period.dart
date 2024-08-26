@@ -1,9 +1,10 @@
+import 'package:athar_alsahaba/features/home/data/models/historical_model_periods.dart';
 import 'package:flutter/material.dart';
-import '../utils/app_assets.dart';
 import '../utils/app_colors.dart';
 
 class HistoricalPeriod extends StatelessWidget {
-   HistoricalPeriod({super.key});
+   HistoricalPeriod({super.key,  required this.models});
+   final HistoricalPeriodsModel models;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +28,7 @@ class HistoricalPeriod extends StatelessWidget {
             height: 47,
             width: 62,
             child:   Text(
-              "Ancient Egypt",
+              models.name,
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
               textAlign: TextAlign.center,
@@ -39,7 +40,7 @@ class HistoricalPeriod extends StatelessWidget {
           Container(
             decoration:   BoxDecoration(
               image: DecorationImage(
-                image: AssetImage(Assets.imagesFrame),
+                image: NetworkImage(models.image),
               ),
             ),
             height: 64,
